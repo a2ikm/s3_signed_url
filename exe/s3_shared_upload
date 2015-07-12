@@ -12,6 +12,10 @@ OptionParser.new do |op|
   op.on "-u", "--upload FILE", "Upload the file for the URL" do |v|
     options[:upload] = v
   end
+
+  op.on "-s", "--[no-]secure", "Use HTTPS or not. Default: true" do |v|
+    options[:secure] = v
+  end
 end.parse!(ARGV)
 
 url = ARGV[0]

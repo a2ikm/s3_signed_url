@@ -36,7 +36,8 @@ module S3SharedUpload
       signer.presigned_url(
         :get_object,
         bucket: bucket_name,
-        key: object_key
+        key: object_key,
+        secure: options[:secure]
       )
     end
 
