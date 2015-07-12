@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Masato Ikeda"]
   spec.email         = ["masato.ikeda@gmail.com"]
 
-  spec.summary       = %q{Upload file to AWS S3 and generate presigned URL optionally.}
-  spec.description   = %q{Upload file to AWS S3 and generate presigned URL optionally.}
+  spec.summary       = %q{Generate signed URLs to get S3 objects.}
+  spec.description   = %q{Generate signed URLs to get S3 objects.}
   spec.homepage      = "https://github.com/a2ikm/s3_signed_url"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
