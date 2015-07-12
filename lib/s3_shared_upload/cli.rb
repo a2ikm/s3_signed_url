@@ -33,12 +33,15 @@ module S3SharedUpload
     end
 
     def generate_presigned_url
-      signer.presigned_url(
-        :get_object,
+      opts = {
         bucket: bucket_name,
         key: object_key,
         secure: options[:secure]
-      )
+      }
+
+      opts[:expires_in] = options[:expire].to_i if options.key?(:expire)
+
+      signer.presigned_url(:get_object, opts)
     end
 
     def signer

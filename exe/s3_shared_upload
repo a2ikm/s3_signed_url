@@ -9,6 +9,10 @@ OptionParser.new do |op|
   op.version = S3SharedUpload::VERSION
   op.banner = "Usage: s3_shared_upload URL [--upload FILE]"
 
+  op.on "-e", "--expire SECONDS", "The number of seconds before the presigned URL expires. Defaults: 900 (15 min)" do |v|
+    options[:expire] = v
+  end
+
   op.on "-u", "--upload FILE", "Upload the file for the URL" do |v|
     options[:upload] = v
   end
