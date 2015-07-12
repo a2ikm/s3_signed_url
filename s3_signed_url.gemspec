@@ -1,17 +1,17 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 's3_shared_upload/version'
+require 's3_signed_url/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "s3_shared_upload"
-  spec.version       = S3SharedUpload::VERSION
+  spec.name          = "s3_signed_url"
+  spec.version       = S3SignedUrl::VERSION
   spec.authors       = ["Masato Ikeda"]
   spec.email         = ["masato.ikeda@gmail.com"]
 
   spec.summary       = %q{Upload file to AWS S3 and generate presigned URL optionally.}
   spec.description   = %q{Upload file to AWS S3 and generate presigned URL optionally.}
-  spec.homepage      = "https://github.com/a2ikm/s3_shared_upload"
+  spec.homepage      = "https://github.com/a2ikm/s3_signed_url"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = "exe"

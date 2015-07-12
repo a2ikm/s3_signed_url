@@ -1,13 +1,13 @@
 #!/usr/bin/env ruby
 
 require "optparse"
-require "s3_shared_upload"
+require "s3_signed_url"
 
 options = {}
 
 OptionParser.new do |op|
-  op.version = S3SharedUpload::VERSION
-  op.banner = "Usage: s3_shared_upload URL [--upload FILE]"
+  op.version = S3SignedUrl::VERSION
+  op.banner = "Usage: s3_signed_url URL [--upload FILE]"
 
   op.on "-e", "--expire SECONDS", "The number of seconds before the presigned URL expires. Defaults: 900 (15 min)" do |v|
     options[:expire] = v
@@ -23,4 +23,4 @@ OptionParser.new do |op|
 end.parse!(ARGV)
 
 url = ARGV[0]
-S3SharedUpload::Cli.new(url, options).run
+S3SignedUrl::Cli.new(url, options).run

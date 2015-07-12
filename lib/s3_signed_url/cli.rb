@@ -1,7 +1,7 @@
 require "uri"
 require "aws-sdk"
 
-module S3SharedUpload
+module S3SignedUrl
   class Cli
     attr_reader :s3_uri, :options
 
