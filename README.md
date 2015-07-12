@@ -20,8 +20,8 @@ Or install it yourself as:
 
     $ gem install s3_signed_url
 
-Ands3_signed_url requires `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, and `AWS_REGION`.
-So you should get these from AWS IAM, and set in `~/.aws/credentials` or environment variables.
+Ands 3_signed_url requires `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, and `AWS_REGION`.
+So you should get them from AWS IAM, and set in `~/.aws/credentials` or environment variables.
 
 ## Usage
 
