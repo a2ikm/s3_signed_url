@@ -3,10 +3,9 @@ require "aws-sdk"
 
 module S3SharedUpload
   class Cli
-    attr_reader :path, :s3_uri, :options
+    attr_reader :s3_uri, :options
 
-    def initialize(path, s3_url, options = {})
-      @path = File.expand_path(path)
+    def initialize(s3_url, options = {})
       @s3_uri = URI(s3_url)
       @options = options
     end
@@ -21,6 +20,11 @@ module S3SharedUpload
     private
 
     def upload
+      return unless options.key?(:upload)
+
+      path = options[:upload]
+      object_body = File.read(File.expand_path(path))
+
       client.put_object(
         bucket: bucket_name,
         body: object_body,
@@ -49,11 +53,7 @@ module S3SharedUpload
     end
 
     def object_key
-      @s3_uri.path
-    end
-
-    def object_body
-      File.read(path)
+      @s3_uri.path.sub(%r{\A/}, "")
     end
   end
 end

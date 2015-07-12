@@ -1,5 +1,18 @@
 #!/usr/bin/env ruby
 
+require "optparse"
 require "s3_shared_upload"
 
-S3SharedUpload::Cli.new(ARGV[0], ARGV[1]).run
+options = {}
+
+OptionParser.new do |op|
+  op.version = S3SharedUpload::VERSION
+  op.banner = "Usage: s3_shared_upload URL [--upload FILE]"
+
+  op.on "-u", "--upload FILE", "Upload the file for the URL" do |v|
+    options[:upload] = v
+  end
+end.parse!(ARGV)
+
+url = ARGV[0]
+S3SharedUpload::Cli.new(url, options).run
