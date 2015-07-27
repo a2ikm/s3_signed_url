@@ -20,6 +20,10 @@ OptionParser.new do |op|
   op.on "-s", "--[no-]secure", "Use HTTPS or not. Default: true" do |v|
     options[:secure] = v
   end
+
+  op.on "-m", "--method METHOD", "HTTP Method (GET|PUT). Default: GET" do |v|
+    options[:method] = v
+  end
 end.parse!(ARGV)
 
 url = ARGV[0]

@@ -39,7 +39,7 @@ module S3SignedUrl
 
       opts[:expires_in] = options[:expire].to_i if options.key?(:expire)
 
-      signer.presigned_url(:get_object, opts)
+      signer.presigned_url(meth, opts)
     end
 
     def signer
@@ -56,6 +56,15 @@ module S3SignedUrl
 
     def object_key
       @s3_uri.path.sub(%r{\A/}, "")
+    end
+
+    def meth
+      case options[:method].to_s.upcase
+      when "PUT"
+        :put_object
+      else
+        :get_object
+      end
     end
   end
 end
