@@ -1,6 +1,6 @@
 # s3_signed_url
 
-s3_signed_url generates signed URLs to get S3 objects.
+s3_signed_url generates signed URLs to get or put S3 objects.
 
 Our backend is described in [official documetns](http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html).
 
@@ -31,6 +31,10 @@ Generate URL for s3://examplebucket/test.txt:
     $ s3_signed_url s3://examplebucket/test.txt
     https://s3.amazonaws.com/examplebucket/test.txt?...
 
+Then you can download the file like:
+
+    $ curl -o test.txt "https://s3.amazonaws.com/examplebucket/test.txt?..."
+
 The generated uses HTTPS by default. To use HTTP, append `--no-secure` option:
 
     $ s3_signed_url s3://examplebucket/test.txt --no-secure
@@ -45,6 +49,15 @@ If you want to upload a new file and generated a signed url for it, append `--up
 
     $ s3_signed_url s3://examplebucket/test.txt --upload /path/to/test.txt
     https://s3.amazonaws.com/examplebucket/test.txt?...
+
+If you need an uploadable url, append `--method` option with `PUT`:
+
+    $ s3_signed_url s3://examplebucket/test.txt --method PUT
+    https://s3.amazonaws.com/examplebucket/test.txt?...
+
+Then you can send a PUT request with an uploading file like:
+
+    $ curl --upload-file /path/to/test.txt "https://s3.amazonaws.com/examplebucket/test.txt?..."
 
 ## Development
 
