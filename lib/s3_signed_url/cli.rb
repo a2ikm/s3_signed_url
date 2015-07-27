@@ -12,9 +12,7 @@ module S3SignedUrl
 
     def run
       upload
-      presigned_url = generate_presigned_url
-
-      puts presigned_url
+      generate_presigned_url
     end
 
     private

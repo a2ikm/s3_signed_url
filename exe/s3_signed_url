@@ -23,4 +23,4 @@ OptionParser.new do |op|
 end.parse!(ARGV)
 
 url = ARGV[0]
-S3SignedUrl::Cli.new(url, options).run
+puts S3SignedUrl::Cli.new(url, options).run
